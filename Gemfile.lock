@@ -70,8 +70,8 @@ GEM
     simpleidn (0.2.3)
     stringio (3.2.0)
     tsort (0.2.0)
-    vers (1.2.0)
-    webmock (3.26.1)
+    vers (1.2.1)
+    webmock (3.26.2)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
@@ -87,7 +87,7 @@ DEPENDENCIES
   minitest-mock
   rake (~> 13.0)
   simplecov (~> 0.22)
-  webmock (~> 3.0)
+  webmock (~> 3.26)
 
 CHECKSUMS
   addressable (2.8.9) sha256=cc154fcbe689711808a43601dee7b980238ce54368d23e127421753e46895485
@@ -124,8 +124,8 @@ CHECKSUMS
   simpleidn (0.2.3) sha256=08ce96f03fa1605286be22651ba0fc9c0b2d6272c9b27a260bc88be05b0d2c29
   stringio (3.2.0) sha256=c37cb2e58b4ffbd33fe5cd948c05934af997b36e0b6ca6fdf43afa234cf222e1
   tsort (0.2.0) sha256=9650a793f6859a43b6641671278f79cfead60ac714148aabe4e3f0060480089f
-  vers (1.2.0) sha256=c24524dd3933f9fd8530008b6b303b216ff542cae097fcfddc4779f8fa6f5137
-  webmock (3.26.1) sha256=4f696fb57c90a827c20aadb2d4f9058bbff10f7f043bd0d4c3f58791143b1cd7
+  vers (1.2.1) sha256=43af19b3d4f0c1bc990e2d22a51edeae63e13116b622b404d5be7d9ad39ef37c
+  webmock (3.26.2) sha256=774556f2ea6371846cca68c01769b2eac0d134492d21f6d0ab5dd643965a4c90
 
 BUNDLED WITH
   4.0.6
