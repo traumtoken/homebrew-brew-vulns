@@ -117,15 +117,24 @@ module Brew
         end
       end
 
+      MAX_PAGES = 100
+
       def fetch_all_pages(response, original_payload)
         vulns = response["vulns"] || []
         page_token = response["next_page_token"]
+        page_count = 1
 
         while page_token
+          if page_count >= MAX_PAGES
+            raise ApiError,
+                  "OSV API returned more than #{MAX_PAGES} pages of results; aborting to avoid an unbounded loop"
+          end
+
           payload = original_payload.merge(page_token: page_token)
           response = post("/query", payload)
           vulns.concat(response["vulns"] || [])
           page_token = response["next_page_token"]
+          page_count += 1
         end
 
         vulns

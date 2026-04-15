@@ -91,6 +91,21 @@ class TestOsvClient < Minitest::Test
     assert_equal "CVE-2", vulns[1]["id"]
   end
 
+  def test_pagination_aborts_after_max_pages
+    # Server keeps echoing a page token forever — without an upper bound the
+    # client would loop until it OOMs. Verify it raises a clear ApiError instead.
+    stub_request(:post, "https://api.osv.dev/v1/query")
+      .to_return(
+        { status: 200, body: { vulns: [{ id: "CVE-LOOP" }], next_page_token: "infinite" }.to_json }
+      )
+
+    error = assert_raises(Brew::Vulns::OsvClient::ApiError) do
+      @client.query(repo_url: "https://github.com/test/repo", version: "v1.0.0")
+    end
+
+    assert_match(/more than \d+ pages/, error.message)
+  end
+
   def test_get_vulnerability_returns_full_data
     stub_request(:get, "https://api.osv.dev/v1/vulns/CVE-2024-1234")
       .to_return(
